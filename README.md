@@ -1,2 +1,2 @@
-# UTubeGallery SAM(Serverless Application Model)
-UTubeGallery App Using AWS S3, Lambda and Spring Boot
+# uTubeGallery SAM(Serverless Application Model)
+uTubeGallery App Using AWS S3, Lambda and Spring Boot
