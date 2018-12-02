@@ -11,10 +11,16 @@ import com.amazonaws.serverless.proxy.spring.SpringBootLambdaContainerHandler;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import com.sample.aws.s3.lambda.service.AwsLambdaAndS3Application;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
+
+@Component
+@NoArgsConstructor
 public class UTubeGalleryLambdaFunctionHandler implements RequestStreamHandler {
 
     private static SpringBootLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse> handler;
+
 
     static {
         try {

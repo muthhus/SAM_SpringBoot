@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: UTUbeGallery Service
+
+Globals:
+  Api:
+    # API Gateway regional endpoints
+    EndpointConfiguration: REGIONAL
+
+Resources:
+  UTUbeGalleryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.sample.aws.s3.lambda.service.utils.aws.AWSLambdaFunctionMapHandler::handleRequest
+      Runtime: java8
+      CodeUri: target/uTubeGallery-service.jar
+      MemorySize: 512
+      Policies: AWSLambdaBasicExecutionRole
+      Timeout: 60
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: any
+
+Outputs:
+  UTUbeGalleryService:
+    Description: URL for application
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Stage/uTubeGallery-service'
+    Export:
+      Name: UTUbeGallery
